@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manejador de Playlists terminado</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css">
+</head>
+<body>
+    <section class="hero-banner">
+        <h1>🎄 Playlist Navideña 🎁</h1>
+        <p>Tu mix de música y videos favoritos para estas fiestas</p>
+    </section>
+    <div class="app-container">
+        <aside class="sidebar">
+            <h1 class="logo">Mi Música 🎶</h1>
+            <button id="new-playlist-btn" class="new-playlist-button"><i class="fa fa-plus"></i> Nueva Playlist</button>
+            <nav>
+                <h2>Mis Playlists</h2>
+                <ul id="playlist-list"></ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header>
+                <h2 id="main-title"></h2>
+                <p id="main-subtitle"></p>
+                            <div class="header-buttons">
+                <button id="save-playlist-btn" class="save-button" style="display: none;">
+                    <i class="fa fa-save"></i> Guardar Playlist
+                </button>
+                <button id="exit-edit-btn" class="exit-button" style="display: none;">
+                    <i class="fa fa-times"></i> Salir
+                </button>
+            </div>
+                <div id="filter-control" class="filter-control" hidden>
+                    <span>Filtrar:</span>
+                    <div class="filter-pills">
+                        <button type="button" data-filter="all" class="active">Todo</button>
+                        <button type="button" data-filter="audio">Audio</button>
+                        <button type="button" data-filter="video">Video</button>
+                    </div>
+                </div>
+            </header>
+            <div id="media-preview" class="media-preview" aria-live="polite" aria-label="Reproductor multimedia" hidden>
+                <video id="audio-player" playsinline preload="metadata"></video>
+            </div>
+            <!-- Pantalla de Home: solo cola de reproducción o mensaje -->
+            <div id="home-screen" class="home-screen">
+                <div id="home-queue-section" class="home-queue-section" style="display:none;">
+                    <h2>Cola de Reproducción</h2>
+                    <ul id="home-queue-list"></ul>
+                </div>
+                <div id="home-empty-message" class="home-empty-message" style="display:none;">
+                    <span>Selecciona una playlist para reproducir</span>
+                </div>
+            </div>
+            <!-- Pantalla de Edición -->
+            <div id="edit-screen" class="edit-screen" style="display: none;">
+                <ul id="master-song-list"></ul>
+                <!-- <ul id="playlist-song-list"></ul> -->
+            </div>
+        </main>
+    </div>
+    <div id="now-playing-bar" class="now-playing-bar">
+        <div class="song-info">
+            <span id="song-title">Selecciona una playlist</span>
+            <span id="song-artist"></span>
+        </div>
+        <div class="player-controls">
+            <button id="prev-btn"><i class="fa fa-step-backward"></i></button>
+            <button id="play-pause-btn"><i class="fa fa-play"></i></button>
+            <button id="next-btn"><i class="fa fa-step-forward"></i></button>
+        </div>
+        <div class="progress-container">
+            <span id="current-time">0:00</span>
+            <input type="range" id="progress-bar" value="0" step="1">
+            <span id="total-time">0:00</span>
+        </div>
+    </div>
+    <div id="playlist-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Crear nueva playlist</h2>
+            <input type="text" id="playlist-name-input" placeholder="Nombre de la playlist">
+            <button id="create-playlist-btn" class="save-button">Guardar</button>
+        </div>
+    </div>
+    <script type="module" src="app.js"></script>
+</body>
+</html>
